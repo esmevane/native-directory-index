@@ -1,0 +1,52 @@
+{
+  "name": "native-directory-index",
+  "version": "0.0.1",
+  "description": "Index and serve Native directory entries",
+  "main": "dist/index.js",
+  "bin": {
+    "native-directory-index": "./bin/native-directory-index"
+  },
+  "scripts": {
+    "start": "npm run build && ./bin/native-directory-index start",
+    "stop": "./bin/native-directory-index stop",
+    "serve": "npm run build && ./bin/native-directory-index serve",
+    "build": "tsc",
+    "test": "mocha --opts mocha.opts"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/esmevane/native-directory-index.git"
+  },
+  "keywords": [
+    "react-directory",
+    "native-directory-index",
+    "react-native",
+    "modules"
+  ],
+  "author": "Joseph McCormick <esmevane@gmail.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/esmevane/native-directory-index/issues"
+  },
+  "homepage": "https://github.com/esmevane/native-directory-index#readme",
+  "dependencies": {
+    "chalk": "^2.1.0",
+    "express": "^4.15.4",
+    "winston": "^2.3.1",
+    "yargs": "^8.0.2"
+  },
+  "devDependencies": {
+    "@types/chai": "^4.0.4",
+    "@types/chalk": "^0.4.31",
+    "@types/express": "^4.0.37",
+    "@types/mocha": "^2.2.42",
+    "@types/node": "^8.0.25",
+    "@types/uuid": "^3.4.1",
+    "@types/winston": "^2.3.5",
+    "@types/yargs": "^8.0.2",
+    "chai": "^4.1.1",
+    "mocha": "^3.5.0",
+    "ts-node": "^3.3.0",
+    "typescript": "^2.4.2"
+  }
+}

@@ -1,0 +1,6 @@
+--colors
+--growl
+--reporter spec
+--require ts-node/register
+--recursive
+src/**/*.spec.ts
