@@ -1,6 +1,6 @@
 --colors
 --growl
+--require babel-register
 --reporter spec
---require ts-node/register
 --recursive
-src/**/*.spec.ts
+src/**/*.spec.js

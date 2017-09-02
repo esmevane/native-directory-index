@@ -1,14 +1,9 @@
-"use strict";
-Object.defineProperty(exports, "__esModule", { value: true });
-exports.defaults = {
-    environment: "development",
-    port: 9500
-};
-class Config {
-    constructor(givenOptions = {}) {
-        const options = Object.assign({}, exports.defaults, givenOptions);
-        this.environment = options.environment;
-        this.port = options.port;
-    }
-}
-exports.default = Config;
+'use strict';
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+var root = exports.root = 'https://raw.githubusercontent.com';
+var repo = exports.repo = 'react-community/native-directory';
+var manifest = exports.manifest = 'master/react-native-libraries.json';
+var directory = exports.directory = `${root}/${repo}/${manifest}`;

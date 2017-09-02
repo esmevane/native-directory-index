@@ -1,29 +1,18 @@
 #!/usr/bin/env node
 
-const path = require("path")
-const yargs = require("yargs")
+const path = require('path')
+const yargs = require('yargs')
 
-const source = path.resolve(__dirname, "../dist")
-const { Logger, Config, Server, Service, Cli } = require(source)
+const source = path.resolve(__dirname, '../dist')
+const { Logger, Commands } = require(source)
 
-const config = new Config({ environment: "service" })
-const service = new Service({ config, server: new Server({ config }) })
-const cli = new Cli({ service, logger: new Logger() })
-const { start, stop, pid, serve } = cli.actions
+const base = yargs
+  .usage('Usage: $0 [OPTIONS] [COMMAND]')
+  .help('h')
+  .alias('h', 'help')
 
-const output = yargs
-  .usage("Usage: $0 [OPTIONS] [COMMAND]")
-  .default({ environment: "service", port: 9500 })
-  .help("h")
-  .alias("p", "port")
-  .alias("e", "environment")
-  .alias("env", "environment")
-  .alias("h", "help")
-  .coerce("port", string => parseInt(string))
-  .command(start)
-  .command(pid)
-  .command(stop)
-  .command(serve)
-  .demandCommand()
-  .wrap(80)
-  .argv
+const addCommands = (cli, command) => cli.command(command.create().toYargs())
+
+const withCommands = Commands.reduce(addCommands, base)
+
+withCommands.demandCommand().wrap(80).argv
