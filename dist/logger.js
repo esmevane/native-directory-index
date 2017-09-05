@@ -21,6 +21,17 @@ function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj;
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
+var Logger = _winston2.default.Logger,
+    Console = _winston2.default.transports.Console;
+
+
+var formatter = function formatter(_ref) {
+  var message = _ref.message;
+  return `${message || ''}`;
+};
+var transports = [new Console({ formatter })];
+var logger = new Logger({ transports });
+
 var intro = _chalk2.default.bold.white(`[native-directory]`);
 var happy = function happy(message) {
   return _chalk2.default.blue(`${intro}: ${Emoji.robot} ${message}`);
@@ -35,7 +46,7 @@ var info = exports.info = function info() {
   }
 
   return messages.forEach(function (message) {
-    return _winston2.default.info(happy(message));
+    return logger.info(happy(message));
   });
 };
 
@@ -45,6 +56,6 @@ var error = exports.error = function error() {
   }
 
   return messages.forEach(function (message) {
-    return _winston2.default.error(upset(message));
+    return logger.error(upset(message));
   });
 };
